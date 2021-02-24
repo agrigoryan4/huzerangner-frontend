@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-// import { Container } from 'semantic-ui-react';
-import Head from './Head/Head';
-import Posts from './Posts/Posts';
-import PostSingle from './Posts/PostSingle/PostSingle';
+import Head from './Head';
+import Bottom from './Bottom';
+import Content from './Content';
 
 const PageWrapper = styled.div`
   background-color: #fff;
-  min-height: 100vh;
 `;
 
 const Home = () => {
@@ -16,17 +14,8 @@ const Home = () => {
     <Router>
       <PageWrapper> 
         <Head />
-        <Switch>
-          <Route path='/posts/post/:postId'>
-            <PostSingle />
-          </Route>
-          <Route path='/posts'>
-            <Posts />
-          </Route>
-          <Route path='/'>
-            <Posts />
-          </Route>
-        </Switch>
+        <Content />
+        <Bottom />
       </PageWrapper>
     </Router>
     

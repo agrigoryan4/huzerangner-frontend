@@ -5,11 +5,12 @@ import { useParams } from 'react-router-dom';
 import api from '../../../api';
 import PostLoader from '../components/PostLoader';
 import Tags from '../components/Tags';
+import TimeFormatted from '../components/TimeFormatted';
 
 const Wrapper = styled.div`
   background-color: #fafafa;
   max-width: 800px;
-  margin: 1rem auto; 
+  margin: 0 auto 2rem auto; 
 `
 
 const StyledPost = styled.article`
@@ -28,7 +29,7 @@ const StyledPost = styled.article`
     font-size: 1.1rem;
   }
   > header {
-    box-shadow: 10px 10px 5px 0px rgba(235,235,235,1);
+    box-shadow: 10px 10px 10px 0px rgba(235,235,235,1);
     border-top: 2px solid #fff;
     border-right: 2px solid #dadada;
     border-bottom: 2px solid #dadada;
@@ -43,6 +44,15 @@ const StyledPost = styled.article`
   }
 `;
 
+const FooterContentWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start; 
+  }
+`;
+
 
 const PostSingle = () => {
   const { postId } = useParams(); 
@@ -53,32 +63,43 @@ const PostSingle = () => {
     body: '',
     tags: null,
     createdAt: null,
+    lastEdited: null,
   }
   const [ postData, setPostData ] = useState(initialState);
+ 
+  const scrollToTop = () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  };
 
-  const getSomePost = async () => {
+  const getSingle = async () => {
     const res = await api.getPostSingle(postId);
-    const { _id, title, body, tags, createdAt } = res.data;
-    setPostData({ _id, title, body, tags, createdAt });
+    const { _id, title, body, tags, createdAt, lastEdited } = res.data;
+    setPostData({ _id, title, body, tags, createdAt, lastEdited });
   };
 
   useEffect(() => {
-    getSomePost();
+    scrollToTop();
+    getSingle();
   }, []);
 
+  const { _id, title, body, tags, createdAt, lastEdited } = postData;
   return (
-    postData._id ? (
+    _id ? (
       <Wrapper>
         <StyledPost>
         <header>
-          <Tags tags={postData.tags} />
-          <h2>{postData.title}</h2>
+          <Tags tags={tags} />
+          <h2 className='animate__animated animate__fadeInDown'>{title}</h2>
         </header>
         <div>
-          {parseHTML(postData.body)}
+          {parseHTML(body)}
         </div>
         <footer>
-          ստեղծվել է՝ {postData.createdAt}
+          <FooterContentWrapper>
+            <div>ստեղծված է՝ <TimeFormatted timeStamp={createdAt} /></div>
+            {(createdAt !== lastEdited) && <div>թարմացված է <TimeFormatted timeStamp={lastEdited} relative /></div>}
+          </FooterContentWrapper>
         </footer>
       </StyledPost>
     </Wrapper>

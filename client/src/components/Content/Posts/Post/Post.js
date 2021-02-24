@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Tags from '../components/Tags';
+import Tags from '../../components/Tags';
+import TimeFormatted from '../../components/TimeFormatted';
 
 const ArticleStyled = styled.div`
   background-color: #fff !important;
@@ -20,11 +21,27 @@ const ArticleStyled = styled.div`
   header {
     margin-top: 0.5rem;
     margin-bottom: 0.2rem;
+    h3 {
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: -1;
+    }
+    position: relative;
+    &:after {
+      content: '';
+      background: linear-gradient(to right,  rgba(256, 256, 256, 0) 0%,rgba(256,256,256,1) 100%);
+      display: block;
+      width: 60px;
+      height: 2rem;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
   }
   footer {
     background-color: #f8f8f8;
     margin-top: 0.5rem;
-    padding: 4px;
+    padding: 0.3rem 0.5rem;
     border-top: 1px solid #dadada;
     opacity: 0.9;
     text-align: right;
@@ -41,8 +58,9 @@ const Post = ({ id, title, body, tags, createdAt, lastEdited }) => {
         </Link>
       </header>
       <footer>
-        <span>վերջին թարմացումը՝ {lastEdited} </span>
-        <span>ստեղծված է՝ {createdAt}</span>
+        <span>
+          <TimeFormatted timeStamp={createdAt} relative />
+        </span>
       </footer>
     </ArticleStyled>
   );

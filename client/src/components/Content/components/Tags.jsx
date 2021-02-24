@@ -19,7 +19,7 @@ const Labels = ({ tags }) => {
 
   const renderTags = (tags) => {
     if(!tags) return null;
-    return tags.map(tag => <Label as='span'>#{tag}</Label>);
+    return tags.map(tag => tag ? <Label as='span'>#{tag}</Label> : null);
   };
 
   return (
