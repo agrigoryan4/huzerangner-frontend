@@ -7,6 +7,7 @@ import scrollToTop from '../../../utils/scrollToTop';
 //
 import PostLoader from '../components/PostLoader';
 import Tags from '../components/Tags';
+import ShareSingle from './ShareSingle.js';
 import TimeFormatted from '../components/TimeFormatted';
 
 const Wrapper = styled.div`
@@ -55,7 +56,6 @@ const FooterContentWrapper = styled.div`
   }
 `;
 
-
 const PostSingle = () => {
   const { postId } = useParams(); 
 
@@ -98,6 +98,7 @@ const PostSingle = () => {
             {(createdAt !== lastEdited) && <div>թարմացված է <TimeFormatted timeStamp={lastEdited} relative /></div>}
           </FooterContentWrapper>
         </footer>
+        <ShareSingle title={title} url={window.location.href} />
       </StyledPost>
     </Wrapper>
     ) : <PostLoader />
