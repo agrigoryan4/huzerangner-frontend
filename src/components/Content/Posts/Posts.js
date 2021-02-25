@@ -5,6 +5,8 @@ import { Icon } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changePage, totalPagesChange, getPosts } from '../../../actions';
 //
+import scrollToTop from '../../../utils/scrollToTop';
+//
 import PostLoader from '../components/PostLoader';
 import Pagination from '../components/Pagination';
 import Post from './Post';
@@ -72,6 +74,7 @@ const Posts = () => {
 
   useEffect(() => {
     dispatch(getPosts(activePage));
+    scrollToTop();
   }, [activePage]);
 
   useEffect(() => {

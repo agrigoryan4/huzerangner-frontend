@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import parseHTML from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import api from '../../../api';
+import scrollToTop from '../../../utils/scrollToTop';
+//
 import PostLoader from '../components/PostLoader';
 import Tags from '../components/Tags';
 import TimeFormatted from '../components/TimeFormatted';
@@ -66,11 +68,6 @@ const PostSingle = () => {
     lastEdited: null,
   }
   const [ postData, setPostData ] = useState(initialState);
- 
-  const scrollToTop = () => {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  };
 
   const getSingle = async () => {
     const res = await api.getPostSingle(postId);
@@ -79,7 +76,7 @@ const PostSingle = () => {
   };
 
   useEffect(() => {
-    scrollToTop();
+    scrollToTop()
     getSingle();
   }, []);
 
