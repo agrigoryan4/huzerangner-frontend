@@ -8,15 +8,17 @@ import scrollToTop from '../../../utils/scrollToTop';
 import PostLoader from '../components/PostLoader';
 import Tags from '../components/Tags';
 import ShareSingle from './ShareSingle.js';
+import FacebookComments from './Facebook/Comments';
 import TimeFormatted from '../components/TimeFormatted';
 
 const Wrapper = styled.div`
-  background-color: #fafafa;
   max-width: 800px;
+  min-height: 100vh;
   margin: 0 auto 2rem auto; 
 `
 
 const StyledPost = styled.article`
+  background-color: #fafafa;
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
@@ -85,22 +87,23 @@ const PostSingle = () => {
     _id ? (
       <Wrapper>
         <StyledPost>
-        <header>
-          <Tags tags={tags} />
-          <h2 className='animate__animated animate__fadeInDown'>{title}</h2>
-        </header>
-        <div>
-          {parseHTML(body)}
-        </div>
-        <footer>
-          <FooterContentWrapper>
-            <div>ստեղծված է՝ <TimeFormatted timeStamp={createdAt} /></div>
-            {(createdAt !== lastEdited) && <div>թարմացված է <TimeFormatted timeStamp={lastEdited} relative /></div>}
-          </FooterContentWrapper>
-        </footer>
-        <ShareSingle title={title} url={window.location.href} />
-      </StyledPost>
-    </Wrapper>
+          <header>
+            <Tags tags={tags} />
+            <h2 className='animate__animated animate__fadeInDown'>{title}</h2>
+          </header>
+          <div>
+            {parseHTML(body)}
+          </div>
+          <footer>
+            <FooterContentWrapper>
+              <div>հրապարակված է՝ <TimeFormatted timeStamp={createdAt} /></div>
+              {(createdAt !== lastEdited) && <div>վերջին խմբագրումը՝ <TimeFormatted timeStamp={lastEdited} relative /></div>}
+            </FooterContentWrapper>
+          </footer>
+          <ShareSingle title={title} url={window.location.href} />
+          <FacebookComments url={window.location.href} />
+        </StyledPost>
+      </Wrapper>
     ) : <PostLoader />
   );
 };
