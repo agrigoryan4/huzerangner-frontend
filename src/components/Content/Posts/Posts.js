@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changePage, totalPagesChange, getPosts } from '../../../actions';
 //
 import scrollToTop from '../../../utils/scrollToTop';
+import { MOBILE } from '../../../constants/rs-breakpoints';
 //
 import PostLoader from '../components/PostLoader';
 import Pagination from '../components/Pagination';
@@ -29,7 +30,7 @@ const PostsWrapper = styled.div`
 
 const Header = styled.div`
   > h2 {
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: ${MOBILE}px) {
       font-size: 1.2rem;
     }
   }

@@ -4,6 +4,7 @@ import parseHTML from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import api from '../../../api';
 import scrollToTop from '../../../utils/scrollToTop';
+import { MOBILE } from '../../../constants/rs-breakpoints';
 //
 import PostLoader from '../components/PostLoader';
 import Tags from '../components/Tags';
@@ -46,13 +47,18 @@ const StyledPost = styled.article`
   }
   > footer {
     opacity: 0.8;
+    > div {
+      @media screen and (max-width: ${MOBILE}px) {
+        font-size: 0.8rem;
+      }
+    }
   }
 `;
 
 const FooterContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: ${MOBILE}px) {
     flex-direction: column;
     align-items: flex-start; 
   }
