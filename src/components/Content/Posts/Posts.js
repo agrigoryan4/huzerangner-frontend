@@ -13,9 +13,8 @@ import Pagination from '../components/Pagination';
 import Post from './Post';
 
 const PostsWrapper = styled.div`
-  background-color: #f2f3f4 !important;
-  background-color: #fff !important;
-  padding: 2rem !important;
+  background-color: #fff;
+  padding: 2rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

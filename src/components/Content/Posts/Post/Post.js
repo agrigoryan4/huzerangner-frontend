@@ -5,7 +5,7 @@ import Tags from '../../components/Tags';
 import TimeFormatted from '../../components/TimeFormatted';
 
 const ArticleStyled = styled.div`
-  background-color: #fff !important;
+  background-color: #fff;
   border: 1px solid #dadada;
   border-radius: 4px;
   margin: 1rem auto;

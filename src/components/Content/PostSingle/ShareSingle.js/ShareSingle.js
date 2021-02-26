@@ -13,8 +13,9 @@ import {
   ViberIcon,
   TelegramIcon
 } from "react-share";
+import { MOBILE } from '../../../../constants/rs-breakpoints'
 
-const iconSize = (window.innerWidth > 480) ? 48 : 32;
+const iconSize = (window.innerWidth > MOBILE) ? 48 : 32;
 
 const ShareSingle = ({ title, url }) => {
   const titleFormatted = `«${title}» \nՀուզերանգներ | Հ․ Ղուկասյանի հեղինակային բլոգը`;
