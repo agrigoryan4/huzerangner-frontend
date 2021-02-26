@@ -4,7 +4,6 @@ import { Pagination } from 'semantic-ui-react';
 
 class PaginationControlled extends Component {
 
-  // handlePaginationChange = (e, { activePage }) => this.setState({ activePage })
   handlePaginationChange = (e, { activePage }) => {
     const { onActivePageChange } = this.props;
     onActivePageChange(activePage);
@@ -12,7 +11,6 @@ class PaginationControlled extends Component {
 
   render() {
     const { activePage, totalPages } = this.props;
-    // const { activePage, totalPages } = this.props;
 
     return (
       <Pagination

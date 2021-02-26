@@ -1,2 +1,2 @@
-/admin /admin 200
+/admin https://huzerangner.herokuapp.com/admin 302
 /* /index.html 200

@@ -84,9 +84,7 @@ const Posts = () => {
 
   // RENDER
 
-  if(isError) {
-    return <h1>Տեղի ունեցավ սխալ ։(</h1>
-  }
+  if(isError) return <h1>Տեղի ունեցավ սխալ ։(</h1>
 
   return (
     <PostsWrapper>

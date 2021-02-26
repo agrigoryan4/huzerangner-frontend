@@ -14,7 +14,6 @@ const reducer = (state = initialState, action) => {
         activePage: action.payload
       };
     case TOTAL_PAGES:
-      console.log(Math.ceil(action.payload / POSTS_PER_PAGE));
       return {
         ...state,
         totalPages: Math.ceil(action.payload / POSTS_PER_PAGE),
