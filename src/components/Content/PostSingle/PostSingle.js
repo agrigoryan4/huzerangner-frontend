@@ -29,6 +29,7 @@ const StyledPost = styled.article`
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
+  margin: 1rem;
   > * {
     margin: 1rem 2rem;
     padding: 1rem;
@@ -48,7 +49,7 @@ const StyledPost = styled.article`
     border-left: ${props => props.themeMode === 'dark' ? 'none' : '2px solid #fff'};
     h2 {
       margin: 0.6rem auto;
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
   }
   > footer {
