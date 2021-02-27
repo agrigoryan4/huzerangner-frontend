@@ -1,5 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../../actions'
+//
 import { Icon } from 'semantic-ui-react';
 import { MOBILE } from '../../constants/rs-breakpoints';
 
@@ -26,6 +30,17 @@ const FooterContentWrapper = styled.div`
   }
 `;
 
+const Toolbar = styled.div`
+  .darkModeToggler {
+    outline: none;
+    border: 1px solid #fff;
+    color: inherit;
+    background: none;
+    padding: 1rem;
+    
+  }
+`;
+
 const Disclaimer = styled.div`
   font-size: 0.8rem;
 `;
@@ -40,9 +55,23 @@ const Credit = styled.div`
 `;
 
 const Bottom = () => {
+  const themeMode = useSelector(props => props.themeMode);
+
+  const dispatch = useDispatch();
+
+  const themeChangeHandler = () => {
+    dispatch(toggleTheme());
+  };
+
   return (
     <footer>
       <FooterContentWrapper>
+        <Toolbar>
+          <button className='darkModeToggler' onClick={themeChangeHandler}>
+            {themeMode === 'dark' ? 'Անջատել' : 'Միացնել'} մուգ ռեժիմը&nbsp;
+            <Icon name={`toggle ${themeMode === 'dark' ? 'off' : 'on'}`} />
+          </button>
+        </Toolbar>
         <Disclaimer>
           <p>
             <a href='https://www.facebook.com/hamlet.ghukasyan.7' target='_blank' rel='noreferrer'>

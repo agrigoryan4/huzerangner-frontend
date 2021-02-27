@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+// redux
+import { useSelector } from 'react-redux';
+//
+import { MAIN_LIGHT, SECONDARY_LIGHT, MAIN_DARK, SECONDARY_DARK } from '../../../constants/color-scheme';
+//
 import parseHTML from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import api from '../../../api';
@@ -19,7 +24,8 @@ const Wrapper = styled.div`
 `
 
 const StyledPost = styled.article`
-  background-color: #fafafa;
+  background-color: ${props => props.themeMode === 'dark' ? SECONDARY_DARK : SECONDARY_LIGHT};
+  color: ${props => props.themeMode === 'dark' ? MAIN_LIGHT : MAIN_DARK};
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
@@ -35,11 +41,11 @@ const StyledPost = styled.article`
     font-size: 1.1rem;
   }
   > header {
-    box-shadow: 10px 10px 10px 0px rgba(235,235,235,1);
-    border-top: 2px solid #fff;
-    border-right: 2px solid #dadada;
+    box-shadow: ${props => props.themeMode === 'dark' ? 'none' : '10px 10px 10px 0px rgba(235,235,235,1)'};
+    border-top: ${props => props.themeMode === 'dark' ? 'none' : '2px solid #fff'};
+    border-right: ${props => props.themeMode === 'dark' ? 'none' : '2px solid #dadada'};
     border-bottom: 2px solid #dadada;
-    border-left: 2px solid #fff;
+    border-left: ${props => props.themeMode === 'dark' ? 'none' : '2px solid #fff'};
     h2 {
       margin: 0.6rem auto;
       font-size: 2rem;
@@ -66,6 +72,8 @@ const FooterContentWrapper = styled.div`
 
 const PostSingle = () => {
   const { postId } = useParams(); 
+  
+  const themeMode = useSelector(state => state.themeMode);
 
   const initialState = {
     _id: null,
@@ -92,7 +100,7 @@ const PostSingle = () => {
   return (
     _id ? (
       <Wrapper>
-        <StyledPost>
+        <StyledPost themeMode={themeMode} >
           <header>
             <Tags tags={tags} />
             <h2 className='animate__animated animate__fadeInDown'>{title}</h2>

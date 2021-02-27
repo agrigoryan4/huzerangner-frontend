@@ -1,12 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+// redux
+import { useSelector } from 'react-redux';
+//
+import { MAIN_LIGHT, SECONDARY_LIGHT, MAIN_DARK, SECONDARY_DARK } from '../../../../constants/color-scheme';
+//
 import { Link } from 'react-router-dom';
 import Tags from '../../components/Tags';
 import TimeFormatted from '../../components/TimeFormatted';
 
 const ArticleStyled = styled.div`
-  background-color: #fff;
-  border: 1px solid #dadada;
+  background-color: inherit;
+  color: ${props => props.themeMode === 'dark' ? SECONDARY_LIGHT : SECONDARY_DARK};
+  border: 1px solid ${props => props.themeMode === 'dark' ? '#202020' : '#dadada'};
   border-radius: 4px;
   margin: 1rem auto;
   display: flex;
@@ -24,22 +30,13 @@ const ArticleStyled = styled.div`
     h3 {
       white-space: nowrap;
       overflow: hidden;
-      z-index: -1;
     }
-    position: relative;
-    &:after {
-      content: '';
-      background: linear-gradient(to right,  rgba(256, 256, 256, 0) 0%,rgba(256,256,256,1) 100%);
-      display: block;
-      width: 60px;
-      height: 2rem;
-      position: absolute;
-      right: 0;
-      bottom: 0;
+    a {
+      color: ${props => props.themeMode === 'dark' ? 'inherit' : 'auto'};;
     }
   }
   footer {
-    background-color: #f8f8f8;
+    background-color: ${props => props.themeMode === 'dark' ? SECONDARY_DARK : SECONDARY_LIGHT};
     margin-top: 0.5rem;
     padding: 0.3rem 0.5rem;
     border-top: 1px solid #dadada;
@@ -49,8 +46,9 @@ const ArticleStyled = styled.div`
 `;
 
 const Post = ({ id, title, body, tags, createdAt, lastEdited }) => {
+  const themeMode = useSelector(state => state.themeMode);
   return (
-    <ArticleStyled>
+    <ArticleStyled themeMode={themeMode} >
       <Tags tags={tags} />
       <header>
         <Link to={`/posts/post/${id}`}>

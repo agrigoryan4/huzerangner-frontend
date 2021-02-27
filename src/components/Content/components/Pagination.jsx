@@ -10,10 +10,10 @@ class PaginationControlled extends Component {
   }
 
   render() {
-    const { activePage, totalPages } = this.props;
+    const { activePage, totalPages, darkMode } = this.props;
 
     return (
-      <Pagination
+      <Pagination inverted={darkMode ? true : false}
         activePage={activePage}
         onPageChange={this.handlePaginationChange}
         totalPages={totalPages}
@@ -33,5 +33,6 @@ PaginationControlled.propTypes = {
   totalPages: PropTypes.number,
   onActivePageChange: PropTypes.func,
 };
+
 
 export default PaginationControlled;

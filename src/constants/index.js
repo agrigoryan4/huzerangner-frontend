@@ -8,3 +8,6 @@ export const PAGE_CHANGE = 'PAGE_CHANGE';
 export const TOTAL_PAGES = 'TOTAL_PAGES_CHANGE';
 //---
 export const POSTS_PER_PAGE = 10;
+
+// theme
+export const TOGGLE_THEME = 'TOGGLE_THEME';

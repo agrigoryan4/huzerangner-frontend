@@ -4,7 +4,7 @@ import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 
 const HeadWrapper = styled.div`
-  background-color: #151515;
+  background-color: #202020;
   color: #fafafa;
   padding: 1rem;
   display: flex;
@@ -30,9 +30,9 @@ const Head = () => {
     <header>
       <Link to='/posts' >
         <HeadWrapper>
-          <img src={logo} alt='website logo' className='animate__animated animate__pulse'/>
+          <img src={logo} alt='website logo'/>
           {/* <h1>Հուզերանգներ</h1> */}
-          <h2 className='animate__animated animate__pulse'>Հ․ Ղուկասյանի հեղինակային բլոգը</h2>
+          <h2>Հ․ Ղուկասյանի հեղինակային բլոգը</h2>
         </HeadWrapper>
       </Link>
     </header>

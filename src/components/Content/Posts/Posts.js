@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-//redux
+// redux
 import { useSelector, useDispatch } from 'react-redux';
 import { changePage, totalPagesChange, getPosts } from '../../../actions';
+//
+import { MAIN_LIGHT, SECONDARY_LIGHT, MAIN_DARK, SECONDARY_DARK} from '../../../constants/color-scheme';
 //
 import scrollToTop from '../../../utils/scrollToTop';
 import { MOBILE } from '../../../constants/rs-breakpoints';
@@ -13,7 +15,7 @@ import Pagination from '../components/Pagination';
 import Post from './Post';
 
 const PostsWrapper = styled.div`
-  background-color: #fff;
+  background-color: inherit;
   padding: 2rem;
   min-height: 100vh;
   display: flex;
@@ -29,6 +31,7 @@ const PostsWrapper = styled.div`
 
 const Header = styled.div`
   > h2 {
+    color: ${props => props.themeMode === 'dark' ? MAIN_LIGHT : MAIN_DARK};
     @media screen and (max-width: ${MOBILE}px) {
       font-size: 1.2rem;
     }
@@ -63,6 +66,8 @@ const Posts = () => {
   const { posts, inTotal, isLoading, isError } = useSelector(state => state.posts);
   // pagination
   const { activePage, totalPages } = useSelector(state => state.pagination);
+  // themeMode
+  const themeMode = useSelector(state => state.themeMode);
 
   // HANDLERS 
 
@@ -88,13 +93,14 @@ const Posts = () => {
 
   return (
     <PostsWrapper>
-      <Header>
+      <Header themeMode={themeMode}>
         <h2> <Icon name='clock outline' />Վերջին հրապարակումները</h2>
       </Header>
       <PostsList>
         {!isLoading? getPostsJSX(posts) : <PostLoader />}
       </PostsList>
       <Pagination 
+        darkMode={themeMode === 'dark'}
         activePage={activePage} 
         totalPages={totalPages}
         onActivePageChange={onActivePageChange}
