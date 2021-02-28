@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton';
 // redux
 import { useSelector } from 'react-redux';
-//
+// constants
 import { MAIN_LIGHT, SECONDARY_LIGHT, MAIN_DARK, SECONDARY_DARK } from '../../../../constants/color-scheme';
-//
-import { Link } from 'react-router-dom';
+// components
 import Tags from '../../components/Tags';
 import TimeFormatted from '../../components/TimeFormatted';
 
@@ -45,21 +46,26 @@ const ArticleStyled = styled.div`
   }
 `;
 
-const Post = ({ id, title, body, tags, createdAt, lastEdited }) => {
+const Post = ({ id, title, body, tags, createdAt, lastEdited, isLoading }) => {
   const themeMode = useSelector(state => state.themeMode);
+  console.log('is loading: ' + isLoading)
   return (
     <ArticleStyled themeMode={themeMode} >
-      <Tags tags={tags} />
-      <header>
-        <Link to={`/posts/post/${id}`}>
-          <h3>{title}</h3>
-        </Link>
-      </header>
-      <footer>
-        <span>
-          <TimeFormatted timeStamp={createdAt} relative />
-        </span>
-      </footer>
+      {isLoading ? <Skeleton /> : <Tags tags={tags} />}
+      {isLoading ? <Skeleton /> : (
+        <header>
+          <Link to={`/posts/post/${id}`}>
+            <h3>{title}</h3>
+          </Link>
+        </header>
+      )}
+      {isLoading ? (<> <Skeleton /> <br/> </>) : (
+        <footer>
+          <span>
+            <TimeFormatted timeStamp={createdAt} relative />
+          </span>
+        </footer>
+      )}
     </ArticleStyled>
   );
 };

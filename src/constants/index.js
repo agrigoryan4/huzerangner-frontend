@@ -1,3 +1,6 @@
+// theme
+export const TOGGLE_THEME = 'TOGGLE_THEME';
+
 // posts
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
@@ -9,5 +12,5 @@ export const TOTAL_PAGES = 'TOTAL_PAGES_CHANGE';
 //---
 export const POSTS_PER_PAGE = 10;
 
-// theme
-export const TOGGLE_THEME = 'TOGGLE_THEME';
+// search
+export const CHANGE_CURRENT_QUERY = 'CHANGE_CURRENT_QUERY';

@@ -1,9 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+// redux
+import { useDispatch } from 'react-redux';
+import { changePage, changeSearchQuery } from '../../actions';
+// assets
 import logo from '../../assets/logo.png';
 import blackPattern from '../../assets/black-Linen/black-Linen_@2X.png';
+// constants
 import { MOBILE } from '../../constants/rs-breakpoints';
-import { Link } from 'react-router-dom';
 
 const HeadWrapper = styled.div`
   background-color: #202020;
@@ -38,9 +43,16 @@ const HeadWrapper = styled.div`
 `;
 
 const Head = () => {
+  const dispatch = useDispatch();
+
+  const headClickHandler = () => {
+    dispatch(changeSearchQuery(null));
+    dispatch(changePage(1));
+  };
+
   return (
     <header>
-      <Link to='/posts' >
+      <Link to='/' onClick={headClickHandler}>
         <HeadWrapper>
           <img src={logo} alt='website logo'/>
           {/* <h1>Հուզերանգներ</h1> */}
