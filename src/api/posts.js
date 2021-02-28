@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { POSTS_PER_PAGE } from '../constants';
-const rootURL = 'https://huzerangner.heroku.com/';
+const rootURL = 'https://huzerangner.heroku.com';
 
 export const getPostSingle = (postId) => axios.get(`${rootURL}/posts/post/${postId}`);
 export const getPosts = (page, query) => {
