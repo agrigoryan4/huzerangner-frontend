@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { POSTS_PER_PAGE } from '../constants';
-const rootURL = 'http://192.168.1.60:5000'
+const rootURL = process.env.SERVER_URL || 'http://localhost:5000';
 
 export const getPostSingle = (postId) => axios.get(`${rootURL}/posts/post/${postId}`);
 export const getPosts = (page, query) => {

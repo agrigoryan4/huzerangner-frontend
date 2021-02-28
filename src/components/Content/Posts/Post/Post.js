@@ -48,7 +48,6 @@ const ArticleStyled = styled.div`
 
 const Post = ({ id, title, body, tags, createdAt, lastEdited, isLoading }) => {
   const themeMode = useSelector(state => state.themeMode);
-  console.log('is loading: ' + isLoading)
   return (
     <ArticleStyled themeMode={themeMode} >
       {isLoading ? <Skeleton /> : <Tags tags={tags} />}
