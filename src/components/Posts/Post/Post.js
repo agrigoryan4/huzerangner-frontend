@@ -5,15 +5,15 @@ import Skeleton from 'react-loading-skeleton';
 // redux
 import { useSelector } from 'react-redux';
 // constants
-import { MAIN_LIGHT, SECONDARY_LIGHT, MAIN_DARK, SECONDARY_DARK } from '../../../../constants/color-scheme';
+import { SECONDARY_LIGHT, SECONDARY_DARK } from '../../../constants/color-scheme';
 // components
 import Tags from '../../components/Tags';
 import TimeFormatted from '../../components/TimeFormatted';
 
 const ArticleStyled = styled.div`
   background-color: inherit;
-  color: ${props => props.themeMode === 'dark' ? SECONDARY_LIGHT : SECONDARY_DARK};
   border: 1px solid ${props => props.themeMode === 'dark' ? '#202020' : '#dadada'};
+  color: ${props => props.themeMode === 'dark' ? SECONDARY_LIGHT : SECONDARY_DARK};
   border-radius: 4px;
   margin: 1rem auto;
   display: flex;

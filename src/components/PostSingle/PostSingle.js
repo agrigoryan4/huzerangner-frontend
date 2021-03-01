@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Skeleton from 'react-loading-skeleton';
 // redux
 import { useSelector } from 'react-redux';
 //
-import { MAIN_LIGHT, SECONDARY_LIGHT, MAIN_DARK, SECONDARY_DARK } from '../../../constants/color-scheme';
+import { MAIN_LIGHT, SECONDARY_LIGHT, MAIN_DARK, SECONDARY_DARK } from '../../constants/color-scheme';
 //
 import parseHTML from 'html-react-parser';
 import { useParams } from 'react-router-dom';
-import api from '../../../api';
-import scrollToTop from '../../../utils/scrollToTop';
-import { MOBILE } from '../../../constants/rs-breakpoints';
+import api from '../../api';
+import scrollToTop from '../../utils/scrollToTop';
+import { MOBILE } from '../../constants/rs-breakpoints';
 //
 import PostLoader from '../components/PostLoader';
 import Tags from '../components/Tags';
@@ -18,6 +19,7 @@ import FacebookComments from './Facebook/Comments';
 import TimeFormatted from '../components/TimeFormatted';
 
 const Wrapper = styled.div`
+  width: 100%;
   max-width: 800px;
   min-height: 100vh;
   margin: 0 auto 2rem auto; 
@@ -99,27 +101,27 @@ const PostSingle = () => {
 
   const { _id, title, body, tags, createdAt, lastEdited } = postData;
   return (
-    _id ? (
-      <Wrapper>
-        <StyledPost themeMode={themeMode} >
-          <header>
-            <Tags tags={tags} />
-            <h2 className='animate__animated animate__fadeInDown'>{title}</h2>
-          </header>
-          <div>
-            {parseHTML(body)}
-          </div>
-          <footer>
+    <Wrapper>
+      <StyledPost themeMode={themeMode} >
+        <header>
+          {_id ? <Tags tags={tags} /> : <Skeleton />}
+          {_id ? <h2 className='animate__animated animate__fadeInDown'>{title}</h2> : <Skeleton />}
+        </header>
+        <div>
+          {_id ? parseHTML(body) : <Skeleton count={10} />}
+        </div>
+        <footer>
+          {_id ? (
             <FooterContentWrapper>
               <div>հրապարակված է՝ <TimeFormatted timeStamp={createdAt} /></div>
               {(createdAt !== lastEdited) && <div>վերջին խմբագրումը՝ <TimeFormatted timeStamp={lastEdited} relative /></div>}
             </FooterContentWrapper>
-          </footer>
-          <ShareSingle title={title} url={window.location.href} />
-          <FacebookComments url={window.location.href} />
-        </StyledPost>
-      </Wrapper>
-    ) : <PostLoader />
+          ) : <Skeleton />}
+        </footer>
+        <ShareSingle title={title} url={window.location.href} />
+        <FacebookComments url={window.location.href} />
+      </StyledPost>
+    </Wrapper>
   );
 };
 

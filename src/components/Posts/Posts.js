@@ -3,23 +3,22 @@ import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { changePage, totalPagesChange, getPosts } from '../../../actions';
+import { changePage, totalPagesChange, getPosts } from '../../actions';
 // constants
-import { MAIN_LIGHT, MAIN_DARK} from '../../../constants/color-scheme';
-import { POSTS_PER_PAGE } from '../../../constants';
+import { MAIN_LIGHT, MAIN_DARK} from '../../constants/color-scheme';
+import { POSTS_PER_PAGE } from '../../constants';
 // utils
-import scrollToTop from '../../../utils/scrollToTop';
-import { MOBILE } from '../../../constants/rs-breakpoints';
+import scrollToTop from '../../utils/scrollToTop';
+import { MOBILE } from '../../constants/rs-breakpoints';
 // components
-import Search from '../Search';
 import Pagination from '../components/Pagination';
 import Post from './Post';
 
 const PostsWrapper = styled.div`
   background-color: inherit;
   color: ${props => props.themeMode === 'dark' ? MAIN_LIGHT : MAIN_DARK};
+  max-width: 100vw;
   padding: 2rem;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   > header {
