@@ -107,7 +107,7 @@ const Posts = () => {
 
   return (
     <PostsWrapper themeMode={themeMode} >
-      <Search />
+      {/* <Search /> */}
       <Header themeMode={themeMode}>
         <h2> <Icon name='clock outline' />Վերջին հրապարակումները</h2>
       </Header>
