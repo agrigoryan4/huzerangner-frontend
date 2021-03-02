@@ -5,19 +5,17 @@ import { Icon, Input } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changePage, changeSearchQuery } from '../../actions';
 // constants
+import { h2FontSizeMobile } from '../../constants/conventions';
 import { MOBILE } from '../../constants/rs-breakpoints';
 import { MAIN_LIGHT, MAIN_DARK } from '../../constants/color-scheme';
 
+
 const SearchWrapper = styled.div`
-  margin: 2rem auto 2rem 0;
-  @media screen and (max-width: ${MOBILE}px) {
-    margin: 1rem auto 1rem 0;
-  }
-  width: 100%;
+  max-width: 100%;
   > h2 {
     color: ${props => props.themeMode === 'dark' ? MAIN_LIGHT : MAIN_DARK };
     @media screen and (max-width: ${MOBILE}px) {
-      display: none !important;
+      font-size: ${h2FontSizeMobile};
     }
   }
   form {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
 // redux
@@ -45,6 +45,7 @@ const PostsList = styled.div`
 
 const Posts = () => {
 
+  // UTILS
   const getPostsJSX = (posts, loading) => {
     
     let postsArray = posts;
@@ -70,6 +71,9 @@ const Posts = () => {
 
   const dispatch = useDispatch();
 
+  // for scrolling posts into view on change
+  const postsRef = useRef();
+
   // STATE
   // themeMode
   const themeMode = useSelector(state => state.themeMode);
@@ -91,6 +95,7 @@ const Posts = () => {
 
   useEffect(() => {
     dispatch(getPosts(activePage, currentQuery));
+    // postsListRef.current.scrollIntoView();
     scrollToTop();
   }, [activePage, currentQuery]);
 
@@ -105,7 +110,7 @@ const Posts = () => {
   if(isError) return <h1>Տեղի ունեցավ սխալ ։(</h1>
 
   return (
-    <PostsWrapper themeMode={themeMode} >
+    <PostsWrapper themeMode={themeMode} ref={postsRef} >
       {/* <Search /> */}
       <Header themeMode={themeMode}>
         <h2> <Icon name='clock outline' />Վերջին հրապարակումները</h2>

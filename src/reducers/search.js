@@ -4,11 +4,15 @@ import { CHANGE_CURRENT_QUERY } from '../constants';
 import getQueryParams from '../utils/getQueryParams';
 
 const initialState = {
-  currentQuery: getQueryParams().query || null, 
+  currentQuery: getQueryParams().query || null,
 };
 
 const reducer = (state = initialState, action) => {
-  if(action.type === CHANGE_CURRENT_QUERY) return {...state, currentQuery: action.payload};
+  if(action.type === CHANGE_CURRENT_QUERY) {
+    return {
+      ...state, currentQuery: action.payload
+    };
+  }  
   else return state;
 };
 

@@ -104,7 +104,7 @@ const PostSingle = () => {
     <Wrapper>
       <StyledPost themeMode={themeMode} >
         <header>
-          {_id ? <Tags tags={tags} /> : <Skeleton />}
+          {_id ? <Tags tags={tags} themeMode={themeMode} /> : <Skeleton />}
           {_id ? <h2 className='animate__animated animate__fadeInDown'>{title}</h2> : <Skeleton />}
         </header>
         <div>

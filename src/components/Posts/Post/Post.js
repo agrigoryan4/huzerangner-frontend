@@ -50,7 +50,7 @@ const Post = ({ id, title, body, tags, createdAt, lastEdited, isLoading }) => {
   const themeMode = useSelector(state => state.themeMode);
   return (
     <ArticleStyled themeMode={themeMode} >
-      {isLoading ? <Skeleton /> : <Tags tags={tags} />}
+      {isLoading ? <Skeleton /> : <Tags themeMode={themeMode} tags={tags} />}
       {isLoading ? <Skeleton /> : (
         <header>
           <Link to={`/posts/post/${id}`}>

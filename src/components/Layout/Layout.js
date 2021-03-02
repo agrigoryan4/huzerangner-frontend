@@ -7,6 +7,7 @@ import Posts from '../Posts';
 import PostSingle from '../PostSingle';
 import Sidebar from '../Sidebar';
 import Search from '../Search';
+import Tags from '../Tags/Tags';
 
 const HomeLayout = styled.div`
   min-height: 100vh;
@@ -29,6 +30,7 @@ const Layout = ({ layout }) => {
       <HomeLayout>
         <Sidebar>
           <Search />
+          <Tags />
         </Sidebar>
         <Posts />
         <Sidebar>

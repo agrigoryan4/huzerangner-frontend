@@ -15,11 +15,15 @@ const Tags = styled.div`
 `;
 
 
-const Labels = ({ tags }) => {
+const Labels = ({ tags, themeMode }) => {
 
   const renderTags = (tags) => {
     if(!tags) return null;
-    return tags.map(tag => tag ? <Label as='span'>#{tag}</Label> : null);
+    return tags.map(tag => tag ? (
+    <Label as='span' color={ themeMode === 'dark' ? 'black' : null} >
+      #{tag}
+    </Label>
+    ) : null);
   };
 
   return (
