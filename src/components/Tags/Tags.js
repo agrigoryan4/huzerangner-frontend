@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Label, Dropdown } from 'semantic-ui-react';
+import { Icon, Label, Dropdown } from 'semantic-ui-react';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { changePage, changeSearchQuery } from '../../actions';
@@ -82,12 +82,12 @@ const Tags = () => {
 
   return (
     <TagsWrapper themeMode={themeMode}>
-      <h2>Թեգեր</h2>
+      <h2><Icon name='tags'/> Թեգեր</h2>
       <Dropdown
         placeholder='Ընտրեք թեգը․․․'
         clearable
-        // open by default on desktop
-        defaultOpen={!isMobile()}
+        // open by default on desktop, causes unexpected behaviour
+        // defaultOpen={!isMobile()}
         closeOnBlur
         closeOnChange
         search

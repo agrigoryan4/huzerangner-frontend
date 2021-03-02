@@ -61,7 +61,7 @@ const Search = () => {
 
   return (
     <SearchWrapper themeMode={themeMode}>
-      <h2>Որոնել</h2>
+      <h2><Icon name='search' /> Որոնել</h2>
       <form>
         <input
           value={query}
