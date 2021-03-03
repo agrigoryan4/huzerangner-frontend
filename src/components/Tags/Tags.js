@@ -30,6 +30,7 @@ const Tags = () => {
   const dispatch = useDispatch();
 
   // HANDLERS
+
   const onDropdownChange = (event, data) => {
     const selectedTagValue = data.value;
     if(selectedTagValue) dispatch(changeSearchQuery(`tag:${selectedTagValue}`));
@@ -38,6 +39,7 @@ const Tags = () => {
   };
 
   // UTILS
+
   const getDropdownOptions = (tagsArray) => {
     if(!tagsArray) return null;
     // sort the tags in descending order
@@ -67,15 +69,18 @@ const Tags = () => {
   };
 
   // STATE
+
   const [tags, setTags] = useState();
   
   // API
+
   const fetchTags = async () => {
     const tagsArray = await api.getTags();
     setTags(tagsArray.data);
   };
 
   // LIFECYCLE
+  
   useEffect(() => {
     fetchTags();
   }, []);

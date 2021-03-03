@@ -41,12 +41,17 @@ const SearchWrapper = styled.div`
 
 
 const Search = () => {
+
+  // REDUX
+
+  const dispatch = useDispatch();
   const themeMode = useSelector(state => state.themeMode);
+
+  // STATE
 
   const [ query, setQuery ] = useState('');
 
-  const dispatch = useDispatch();
-  
+  // HANDLERS
 
   const handleChange = (e) => {
     setQuery(e.target.value);

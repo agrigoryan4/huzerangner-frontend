@@ -46,6 +46,7 @@ const PostsList = styled.div`
 const Posts = () => {
 
   // UTILS
+
   const getPostsJSX = (posts, loading) => {
     
     let postsArray = posts;
@@ -68,21 +69,21 @@ const Posts = () => {
     });
   };
   
-
-  const dispatch = useDispatch();
-
   // for scrolling posts into view on change
   const postsRef = useRef();
 
-  // STATE
+  // REDUX
+
+  const dispatch = useDispatch();
+
   // themeMode
   const themeMode = useSelector(state => state.themeMode);
-  // pagination
-  const { activePage, totalPages } = useSelector(state => state.pagination);
   // query
   const { currentQuery } = useSelector(state => state.search);
   // posts
   const { posts, inTotal, isLoading, isError } = useSelector(state => state.posts);
+  // pagination
+  const { activePage, totalPages } = useSelector(state => state.pagination);
   
 
   // HANDLERS 

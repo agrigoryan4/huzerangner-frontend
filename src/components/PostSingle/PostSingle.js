@@ -76,42 +76,65 @@ const FooterContentWrapper = styled.div`
 const PostSingle = () => {
   const { postId } = useParams(); 
   
+  // REDUX
+
   const themeMode = useSelector(state => state.themeMode);
 
+  // STATE
+
   const initialState = {
-    _id: null,
-    title: null,
-    body: '',
-    tags: null,
-    createdAt: null,
-    lastEdited: null,
+    isLoading: false,
+    isReady: false,
+    isError: false,
+    post: {
+      _id: null,
+      title: null,
+      body: '',
+      tags: null,
+      createdAt: null,
+      lastEdited: null,
+    }
   }
   const [ postData, setPostData ] = useState(initialState);
 
+  // API
+
   const getSingle = async () => {
-    const res = await api.getPostSingle(postId);
-    const { _id, title, body, tags, createdAt, lastEdited } = res.data;
-    setPostData({ _id, title, body, tags, createdAt, lastEdited });
+    let res;
+    try {
+      setPostData({ ...postData, isLoading: true, isReady: false, isError: false });
+      res = await api.getPostSingle(postId);
+    } catch (error) {
+      setPostData({ ...postData, isLoading: false, isReady: false, isError: true });
+    }
+    if(res) {
+      setPostData({ isLoading: false, isError: false, isReady: true, post: res.data });
+    }
   };
+
+  // LIFECYCLE
 
   useEffect(() => {
     scrollToTop()
     getSingle();
-  }, []);
+  }, [postId]);
 
-  const { _id, title, body, tags, createdAt, lastEdited } = postData;
+  // RENDER
+
+  const { isLoading, isReady, isError } = postData;
+  const { _id, title, body, tags, createdAt, lastEdited } = postData.post;
   return (
     <Wrapper>
       <StyledPost themeMode={themeMode} >
         <header>
-          {_id ? <Tags tags={tags} themeMode={themeMode} /> : <Skeleton />}
-          {_id ? <h2 className='animate__animated animate__fadeInDown'>{title}</h2> : <Skeleton />}
+          {!isLoading && isReady ? <Tags tags={tags} themeMode={themeMode} /> : <Skeleton />}
+          {!isLoading && isReady ? <h2 className='animate__animated animate__fadeInDown'>{title}</h2> : <Skeleton />}
         </header>
         <div>
-          {_id ? parseHTML(body) : <Skeleton count={10} />}
+          {!isLoading && isReady ? parseHTML(body) : <Skeleton count={10} />}
         </div>
         <footer>
-          {_id ? (
+          {!isLoading && isReady ? (
             <FooterContentWrapper>
               <div>հրապարակված է՝ <TimeFormatted timeStamp={createdAt} /></div>
               {(createdAt !== lastEdited) && <div>վերջին խմբագրումը՝ <TimeFormatted timeStamp={lastEdited} relative /></div>}

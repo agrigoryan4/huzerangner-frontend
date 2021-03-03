@@ -3,11 +3,12 @@ import styled from 'styled-components';
 // constants
 import { MOBILE } from '../../constants/rs-breakpoints';
 // componenets
-import Posts from '../Posts';
-import PostSingle from '../PostSingle';
 import Sidebar from '../Sidebar';
-import Search from '../Search';
+import Posts from '../Posts';
+import Search from '../Search'; 
 import Tags from '../Tags/Tags';
+import PostSingle from '../PostSingle';
+import SeeAlso from '../SeeAlso';
 
 const HomeLayout = styled.div`
   min-height: 100vh;
@@ -21,7 +22,10 @@ const HomeLayout = styled.div`
 const SingleLayout = styled.div`
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 6fr 4fr;
+  @media screen and (max-width: ${MOBILE}px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Layout = ({ layout }) => {
@@ -41,7 +45,11 @@ const Layout = ({ layout }) => {
   else if (layout === 'single') {
     return (
       <SingleLayout>
+        <Sidebar />
         <PostSingle />
+        <Sidebar>
+          <SeeAlso />
+        </Sidebar>
       </SingleLayout>
     )
   }
