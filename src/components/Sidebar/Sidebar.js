@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+// contants
+import { MOBILE } from '../../constants/rs-breakpoints';
 
 const SideBarWrapper = styled.div`
   display: flex;
@@ -9,6 +11,9 @@ const SideBarWrapper = styled.div`
   padding: 1rem;
   > * {
     margin: 2rem;
+    @media screen and (max-width: ${MOBILE}px) {
+      margin: 1rem 2rem;
+    }
   }
 `;
 

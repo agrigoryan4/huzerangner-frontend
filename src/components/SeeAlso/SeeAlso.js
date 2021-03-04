@@ -14,22 +14,29 @@ import Post from './Post';
 
 const SeeAlsoWrapper = styled.div`
   color: ${props => props.themeMode === 'dark' ? MAIN_LIGHT : MAIN_DARK};
+  position: sticky;
+  top: 2rem;
+  Թmedia screen and (max-width: ${MOBILE}px) {
+    position: static;
+    top: auto;
+  }
   h2: {
     @media screen and (max-width: ${MOBILE}px) {
       font-size: ${h2FontSizeMobile};
     }
   }
   .content-wrapper {
-    .read-also {
-      margin: 1rem auto;
-    }
-    .other-relevant {
+    .relevant {
       display: flex;
       flex-direction: column;
       align-items: start;
       > * {
         margin-top: 1rem;
         margin-bottom: 1rem;
+      }
+      > *:first-child {
+        padding-bottom: 1rem;
+        border-bottom: 4px solid ${props => props.themeMode === 'dark' ? SECONDARY_LIGHT : SECONDARY_DARK }; 
       }
     }
   }
@@ -65,10 +72,7 @@ const SeeAlso = () => {
   const initialState = {
     isError: false,
     isReady: false,
-    posts: {
-      readThis: null,
-      relevant: null
-    }
+    posts: [],
   }
   const [relevantPosts, setRelevantPosts] = useState(initialState);
 
@@ -85,11 +89,8 @@ const SeeAlso = () => {
       setRelevantPosts({
         isError: false,
         isReady: true,
-        posts: {
-          readThis: results.data[0],
-          relevant: results.data.splice(1)
-        }
-      })
+        posts: results.data
+      });
     }
   };
 
@@ -97,20 +98,16 @@ const SeeAlso = () => {
 
   useEffect(() => {
     getRelevantPosts(postId);
-  }, [])
+  }, [postId]);
 
-  if(relevantPosts.isError) return <h2>Տեղի ունեցավ սխալ ։(</h2>
+  if(relevantPosts.isError) return <h2>Տեղի ունեցավ սխալ ։(</h2>;
 
   return (
     <SeeAlsoWrapper themeMode={themeMode} >
       <div className='content-wrapper'>
         <h2>Կարդացեք նաև</h2>
-        <div className='read-also'>
-          { relevantPosts.isReady ? getRelevantPostsJSX(relevantPosts.posts.readThis) : null }
-        </div>
-        <h2>Նմատատիպ</h2>
-        <div className='other-relevant'>
-          { relevantPosts.isReady ? getRelevantPostsJSX(relevantPosts.posts.relevant) : null}
+        <div className='relevant'>
+          { relevantPosts.isReady ? getRelevantPostsJSX(relevantPosts.posts) : null }
         </div>
       </div>
     </SeeAlsoWrapper>

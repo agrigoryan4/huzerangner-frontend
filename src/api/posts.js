@@ -10,14 +10,3 @@ export const getPosts = (page, query) => {
   ${rootURL}/posts/?${query ? `query=${query}` : `all=true`}&page=${page}&limit=${POSTS_PER_PAGE}
   `);
 };
-
-getSimilarPosts('603a27e2d28cfa000414e775').then(res => {
-  let data = res.data;
-  if(data) {
-    data = data.sort((elem1, elem2) => {
-      if(elem1.relevance > elem2.relevance) return -1;
-      else return 1;
-    })
-  }
-  console.log(data);
-}).catch(err => console.log(err));

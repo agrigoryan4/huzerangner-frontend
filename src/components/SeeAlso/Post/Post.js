@@ -10,7 +10,7 @@ const Post = ({ id, title }) => {
   return (
     <StyledPost>
       <Link to={`/posts/post/${id}`}>
-        <h3>{title}</h3>
+        <h4>{title}</h4>
       </Link>
     </StyledPost>
   );
