@@ -1,7 +1,7 @@
-import { MOBILE } from '../constants/rs-breakpoints';
+import { SMALL } from '../constants/rs-breakpoints';
 
-const isMobile = () => {
-  return !(window.innerWidth > MOBILE);
+const isSMALL = () => {
+  return !(window.innerWidth > SMALL);
 };
 
-export default isMobile;
+export default isSMALL;

@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux';
 // api
 import api from '../../api';
 // contants
-import { MOBILE } from '../../constants/rs-breakpoints';
-import { h2FontSizeMobile } from '../../constants/conventions';
+import { SMALL } from '../../constants/rs-breakpoints';
+import { h2FontSizeSMALL } from '../../constants/conventions';
 import { MAIN_LIGHT, MAIN_DARK, SECONDARY_LIGHT, SECONDARY_DARK } from '../../constants/color-scheme';
 // components
 import Post from './Post';
@@ -16,13 +16,13 @@ const SeeAlsoWrapper = styled.div`
   color: ${props => props.themeMode === 'dark' ? MAIN_LIGHT : MAIN_DARK};
   position: sticky;
   top: 2rem;
-  Թmedia screen and (max-width: ${MOBILE}px) {
+  Թmedia screen and (max-width: ${SMALL}px) {
     position: static;
     top: auto;
   }
   h2: {
-    @media screen and (max-width: ${MOBILE}px) {
-      font-size: ${h2FontSizeMobile};
+    @media screen and (max-width: ${SMALL}px) {
+      font-size: ${h2FontSizeSMALL};
     }
   }
   .content-wrapper {

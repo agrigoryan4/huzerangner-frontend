@@ -5,8 +5,8 @@ import { Icon, Input } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changePage, changeSearchQuery } from '../../actions';
 // constants
-import { h2FontSizeMobile } from '../../constants/conventions';
-import { MOBILE } from '../../constants/rs-breakpoints';
+import { h2FontSizeSMALL } from '../../constants/conventions';
+import { SMALL } from '../../constants/rs-breakpoints';
 import { MAIN_LIGHT, MAIN_DARK } from '../../constants/color-scheme';
 
 
@@ -14,8 +14,8 @@ const SearchWrapper = styled.div`
   max-width: 100%;
   > h2 {
     color: ${props => props.themeMode === 'dark' ? MAIN_LIGHT : MAIN_DARK };
-    @media screen and (max-width: ${MOBILE}px) {
-      font-size: ${h2FontSizeMobile};
+    @media screen and (max-width: ${SMALL}px) {
+      font-size: ${h2FontSizeSMALL};
     }
   }
   form {

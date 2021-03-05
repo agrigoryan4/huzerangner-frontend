@@ -5,8 +5,8 @@ import { Icon, Label, Dropdown } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changePage, changeSearchQuery } from '../../actions';
 // constants
-import { h2FontSizeMobile } from '../../constants/conventions';
-import { MOBILE } from '../../constants/rs-breakpoints';
+import { h2FontSizeSMALL } from '../../constants/conventions';
+import { SMALL } from '../../constants/rs-breakpoints';
 import { MAIN_LIGHT, MAIN_DARK } from '../../constants/color-scheme';
 // utils
 import isMobile from '../../utils/isMobile';
@@ -17,8 +17,8 @@ const TagsWrapper = styled.div`
   color: ${props => props.themeMode === 'dark' ? MAIN_LIGHT : MAIN_DARK };
   max-width: 100%;
   h2 {
-    @media screen and (max-width: ${MOBILE}px) {
-      font-size: ${h2FontSizeMobile};
+    @media screen and (max-width: ${SMALL}px) {
+      font-size: ${h2FontSizeSMALL};
     }
   }
 `;
@@ -92,7 +92,7 @@ const Tags = () => {
         placeholder='Ընտրեք թեգը․․․'
         clearable
         // open by default on desktop, causes unexpected behaviour
-        // defaultOpen={!isMobile()}
+        // defaultOpen={!isSMALL()}
         closeOnBlur
         closeOnChange
         search

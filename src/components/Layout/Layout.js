@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 // constants
-import { MOBILE } from '../../constants/rs-breakpoints';
+import { SMALL, MEDIUM } from '../../constants/rs-breakpoints';
 // componenets
 import Sidebar from '../Sidebar';
 import Posts from '../Posts';
@@ -14,7 +14,7 @@ const HomeLayout = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-columns: 3fr 12fr 2fr;
-  @media screen and (max-width: ${MOBILE}px) {
+  @media screen and (max-width: ${MEDIUM}px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -23,8 +23,9 @@ const SingleLayout = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 6fr 4fr;
-  @media screen and (max-width: ${MOBILE}px) {
+  @media screen and (max-width: ${MEDIUM}px) {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
 `;
 

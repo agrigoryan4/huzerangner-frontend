@@ -1,1 +1,1 @@
-export const h2FontSizeMobile = '18px';
+export const h2FontSizeSMALL = '18px';

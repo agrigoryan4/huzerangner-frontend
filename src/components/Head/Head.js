@@ -8,7 +8,7 @@ import { changePage, changeSearchQuery } from '../../actions';
 import logo from '../../assets/logo.png';
 import blackPattern from '../../assets/black-Linen/black-Linen_@2X.png';
 // constants
-import { MOBILE } from '../../constants/rs-breakpoints';
+import { SMALL } from '../../constants/rs-breakpoints';
 
 const HeadWrapper = styled.div`
   background-color: #202020;
@@ -27,7 +27,7 @@ const HeadWrapper = styled.div`
     height: auto;
     min-width: 200px;
     max-width: 18%;
-    @media screen and (max-width: ${MOBILE}px) {
+    @media screen and (max-width: ${SMALL}px) {
       max-width: 60%;
     }
   }
@@ -36,7 +36,7 @@ const HeadWrapper = styled.div`
     font-size: 1rem;
     font-weight: 400;
     opacity: 0.9;
-    @media screen and (max-width: ${MOBILE}px) {
+    @media screen and (max-width: ${SMALL}px) {
       font-size: 0.9rem;
     }
   }

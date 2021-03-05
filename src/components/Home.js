@@ -13,6 +13,7 @@ import Head from './Head';
 import Bottom from './Bottom';
 import Layout from './Layout';
 
+
 const PageWrapper = styled.div`
   background-color: ${props => props.themeMode === 'dark' ? MAIN_DARK : MAIN_LIGHT };
 `;

@@ -1,37 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
-// redux
-import { useSelector } from 'react-redux';
-//
-import { MAIN_LIGHT, SECONDARY_LIGHT, MAIN_DARK, SECONDARY_DARK } from '../../constants/color-scheme';
-//
 import parseHTML from 'html-react-parser';
 import { useParams } from 'react-router-dom';
+// redux
+import { useSelector } from 'react-redux';
+// constants
+import { MAIN_LIGHT, SECONDARY_LIGHT, MAIN_DARK, SECONDARY_DARK } from '../../constants/color-scheme';
+import { SMALL, MEDIUM } from '../../constants/rs-breakpoints';
+// api
 import api from '../../api';
+// utils
 import scrollToTop from '../../utils/scrollToTop';
-import { MOBILE } from '../../constants/rs-breakpoints';
-//
-import PostLoader from '../components/PostLoader';
-import Tags from '../components/Tags';
+// social
 import ShareSingle from './ShareSingle.js';
 import FacebookComments from './Facebook/Comments';
+// components
+import Tags from '../components/Tags';
 import TimeFormatted from '../components/TimeFormatted';
 
 const Wrapper = styled.div`
   width: 100%;
-  max-width: 800px;
-  min-height: 100vh;
-  margin: 0 auto 2rem auto; 
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 `
 
 const StyledPost = styled.article`
   background-color: ${props => props.themeMode === 'dark' ? SECONDARY_DARK : SECONDARY_LIGHT};
   color: ${props => props.themeMode === 'dark' ? MAIN_LIGHT : MAIN_DARK};
+  width: 100%;
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
-  margin: 1rem;
+  margin: 2rem 1rem;
+  @media screen and (max-width: ${MEDIUM}px) {
+    margin: 1rem 1rem;
+  }
   > * {
     margin: 1rem 2rem;
     padding: 1rem;
@@ -57,7 +62,7 @@ const StyledPost = styled.article`
   > footer {
     opacity: 0.8;
     > div {
-      @media screen and (max-width: ${MOBILE}px) {
+      @media screen and (max-width: ${SMALL}px) {
         font-size: 0.8rem;
       }
     }
@@ -67,9 +72,9 @@ const StyledPost = styled.article`
 const FooterContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  @media screen and (max-width: ${MOBILE}px) {
+  @media screen and (max-width: ${SMALL}px) {
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: flex-start;
   }
 `;
 

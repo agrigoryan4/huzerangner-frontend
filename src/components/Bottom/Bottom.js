@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../../actions'
 //
 import { Icon } from 'semantic-ui-react';
-import { MOBILE } from '../../constants/rs-breakpoints';
+import { SMALL } from '../../constants/rs-breakpoints';
 
 const FooterContentWrapper = styled.div`
   background-color: #242526;
@@ -25,7 +25,7 @@ const FooterContentWrapper = styled.div`
       color: rgba(256,256,256,1);
     }
   }
-  @media screen and (max-width: ${MOBILE}px) {
+  @media screen and (max-width: ${SMALL}px) {
     flex-direction: column;
   }
 `;
@@ -48,7 +48,7 @@ const Disclaimer = styled.div`
 const Credit = styled.div`
   font-size: 0.9rem;
   opacity: 0.8;
-  @media screen and (max-width: ${MOBILE}px) {
+  @media screen and (max-width: ${SMALL}px) {
     font-size: 0.8rem;
     align-self: flex-start;
   }

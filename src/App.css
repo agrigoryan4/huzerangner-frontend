@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'FreeSans';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: local('FreeSans'),
+        url(./fonts/FreeSans/FreeSans-Regular.woff2) format('woff2'),
+        url(./fonts/FreeSans/FreeSans-Regular.woff) format('woff'),
+        url(./fonts/FreeSans/FreeSans-Regular.ttf) format('truetype'),
+        url(./fonts/FreeSans/FreeSans-Regular.svg) format('svg');
+}
+
+@font-face {
+  font-family: 'FreeSans';
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+  src: local('FreeSans'),
+        url(./fonts/FreeSans/FreeSans-Italic.woff2) format('woff2'),
+        url(./fonts/FreeSans/FreeSans-Italic.woff) format('woff'),
+        url(./fonts/FreeSans/FreeSans-Italic.ttf) format('truetype'),
+        url(./fonts/FreeSans/FreeSans-Italic.svg) format('svg');
+}
+
+
+@font-face {
+  font-family: 'FreeSans';
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  src: local('FreeSans'),
+        url(./fonts/FreeSans/FreeSans-Bold.woff2) format('woff2'),
+        url(./fonts/FreeSans/FreeSans-Bold.woff) format('woff'),
+        url(./fonts/FreeSans/FreeSans-Bold.ttf) format('truetype'),
+        url(./fonts/FreeSans/FreeSans-Bold.svg) format('svg');
+}
+
+@font-face {
+  font-family: 'FreeSans';
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+  src: local('FreeSans'),
+        url(./fonts/FreeSans/FreeSans-Bold-Italic.woff2) format('woff2'),
+        url(./fonts/FreeSans/FreeSans-Bold-Italic.woff) format('woff'),
+        url(./fonts/FreeSans/FreeSans-Bold-Italic.ttf) format('truetype'),
+        url(./fonts/FreeSans/FreeSans-Bold-Italic.svg) format('svg');
+}
+
+
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body, h1, h2, h3, h4, button, input, optgroup, select, textarea {
+  font-family: 'FreeSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+}

@@ -9,7 +9,7 @@ import { MAIN_LIGHT, MAIN_DARK} from '../../constants/color-scheme';
 import { POSTS_PER_PAGE } from '../../constants';
 // utils
 import scrollToTop from '../../utils/scrollToTop';
-import { MOBILE } from '../../constants/rs-breakpoints';
+import { SMALL } from '../../constants/rs-breakpoints';
 // components
 import Pagination from '../components/Pagination';
 import Post from './Post';
@@ -32,7 +32,7 @@ const PostsWrapper = styled.div`
 
 const Header = styled.div`
   > h2 {
-    @media screen and (max-width: ${MOBILE}px) {
+    @media screen and (max-width: ${SMALL}px) {
       font-size: 1.2rem;
     }
   }
