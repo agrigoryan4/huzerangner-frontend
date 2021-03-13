@@ -120,7 +120,7 @@ const PostSingle = () => {
   // LIFECYCLE
 
   useEffect(() => {
-    scrollToTop()
+    scrollToTop();
     getSingle();
   }, [postId]);
 

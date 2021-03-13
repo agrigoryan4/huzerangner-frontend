@@ -68,7 +68,7 @@ const Bottom = () => {
       <FooterContentWrapper>
         <Toolbar>
           <button className='darkModeToggler' onClick={themeChangeHandler}>
-            {themeMode === 'dark' ? 'Անջատել' : 'Միացնել'} մուգ ռեժիմը&nbsp;
+            {themeMode === 'dark' ? 'Անջատել' : 'Միացնել'} մութ ռեժիմը&nbsp;
             <Icon name={`toggle ${themeMode === 'dark' ? 'off' : 'on'}`} />
           </button>
         </Toolbar>

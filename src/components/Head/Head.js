@@ -8,7 +8,15 @@ import { changePage, changeSearchQuery } from '../../actions';
 import logo from '../../assets/logo.png';
 import blackPattern from '../../assets/black-Linen/black-Linen_@2X.png';
 // constants
-import { SMALL } from '../../constants/rs-breakpoints';
+import { EXTRA_SMALL, SMALL } from '../../constants/rs-breakpoints';
+
+const Wrapper = styled.header`
+  @media screen and (min-width: ${EXTRA_SMALL}px) {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+`;
 
 const HeadWrapper = styled.div`
   background-color: #202020;
@@ -20,6 +28,9 @@ const HeadWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: ${EXTRA_SMALL}px) {
+    flex-direction: row;
+  }
   > img, > h2 {
     margin: 4px;
   }
@@ -51,7 +62,7 @@ const Head = () => {
   };
 
   return (
-    <header>
+    <Wrapper>
       <Link to='/' onClick={headClickHandler}>
         <HeadWrapper>
           <img src={logo} alt='website logo'/>
@@ -59,7 +70,7 @@ const Head = () => {
           <h2>Հ․ Ղուկասյանի հեղինակային բլոգը</h2>
         </HeadWrapper>
       </Link>
-    </header>
+    </Wrapper>
   )
 }
 

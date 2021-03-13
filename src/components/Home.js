@@ -25,7 +25,8 @@ const Home = () => {
 
   useEffect(() => {
     if (currentQuery) setQueryParams('query', currentQuery);
-    setQueryParams('page', activePage);
+    // sets the url query params only when necessary (done mostly to prevent ?page=1 on single post pages)
+    if(totalPages > 1) setQueryParams('page', activePage);
   }, [currentQuery, activePage]);
 
   return (
