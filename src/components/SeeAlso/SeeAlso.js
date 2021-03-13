@@ -15,7 +15,7 @@ import Post from './Post';
 const SeeAlsoWrapper = styled.div`
   color: ${props => props.themeMode === 'dark' ? MAIN_LIGHT : MAIN_DARK};
   position: sticky;
-  top: 2rem;
+  top: 8rem;
   Թmedia screen and (max-width: ${SMALL}px) {
     position: static;
     top: auto;

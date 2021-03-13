@@ -51,10 +51,8 @@ const Posts = () => {
     
     let postsArray = posts;
     if(loading) {
-      postsArray = new Array(POSTS_PER_PAGE);
-      for(let i=0; i<POSTS_PER_PAGE; i++) {
-        postsArray[i] = {};
-      }
+      // new empty array simulating posts
+      postsArray = Array.from(new Array(POSTS_PER_PAGE), elem => ({}) );
     }
     return postsArray.map((post, index) => {
       return <Post 
