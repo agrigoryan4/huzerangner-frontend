@@ -33,9 +33,9 @@ const StyledPost = styled.article`
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
-  margin: 2rem 1rem;
+  margin: 0 1rem 2rem 1rem;
   @media screen and (max-width: ${MEDIUM}px) {
-    margin: 1rem 1rem;
+    margin: 0 1rem 1rem 1rem;
   }
   > * {
     margin: 1rem 2rem;
